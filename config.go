@@ -13,6 +13,10 @@ type EtcdConfig struct {
 	TTL            int           // 单位：s
 	Logger         *zap.Logger
 
+	//Etcd 
+	DialKeepAliveTime time.Duration `json:"dialkeepalivetime"`
+	DialKeepAliveTimeout time.Duration `json:"dialkeepalivetimeout"`
+
 	//ETCD 认证参数
 	CertFile  string `json:"certfile"`
 	KeyFile   string `json:"keyfile"`
