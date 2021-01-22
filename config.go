@@ -1,9 +1,10 @@
 package etcd_tools
 
 import (
+	"time"
+
 	zaplog "github.com/pandaychen/goes-wrapper/zaplog"
 	"go.uber.org/zap"
-	"time"
 )
 
 type EtcdConfig struct {
@@ -13,17 +14,17 @@ type EtcdConfig struct {
 	TTL            int           // 单位：s
 	Logger         *zap.Logger
 
-	//Etcd 
-	DialKeepAliveTime time.Duration `json:"dialkeepalivetime"`
+	//Etcd
+	DialKeepAliveTime    time.Duration `json:"dialkeepalivetime"`
 	DialKeepAliveTimeout time.Duration `json:"dialkeepalivetimeout"`
 
 	//ETCD 认证参数
-	CertFile  string `json:"certfile"`
-	KeyFile   string `json:"keyfile"`
-	CaCert    string `json:"cacert"`
-	BasicAuth bool   `json:"basicauth"`
-	UserName  string `json:"username"`
-	Password  string `json:"passwd"`
+	CertFilePath string `json:"certfilepath"`
+	KeyFilePath  string `json:"keyfilepath"`
+	CaCertPath   string `json:"cacertpath"`
+	BasicAuth    bool   `json:"basicauth"`
+	UserName     string `json:"username"`
+	Password     string `json:"passwd"`
 }
 
 func DefaultConfig() *EtcdConfig {
