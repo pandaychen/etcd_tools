@@ -28,14 +28,14 @@ func (cl *EtcdV3Client) GetKeyValue(ctx context.Context, key string) (*mvccpb.Ke
 	resp, err := cl.Client.Get(ctx, key)
 	if err != nil {
 		cl.Logger.Error("[GetKeyValue]error", zap.String("errmsg", err.Error()))
-		return "", err
+		return nil, err
 	}
 
 	if len(resp.Kvs) > 0 {
-		return rp.Kvs[0], nil
+		return resp.Kvs[0], nil
 	}
 
-	return "", errors.New("no value")
+	return nil, errors.New("no value")
 }
 
 func (cl *EtcdV3Client) GetKeyPrefixValues(ctx context.Context, key_prefix string) (map[string]string, error) {
