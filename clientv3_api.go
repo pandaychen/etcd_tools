@@ -64,7 +64,7 @@ func (cl *EtcdV3Client) DelKey(ctx context.Context, key string) (int64, error) {
 }
 
 func (cl *EtcdV3Client) DelKeyPrefix(ctx context.Context, key_prefix string) (deleted int64, err error) {
-	resp, err := client.Delete(ctx, key_prefix, clientv3.WithPrefix())
+	resp, err := cl.Client.Delete(ctx, key_prefix, clientv3.WithPrefix())
 	if err != nil {
 		cl.Logger.Error("[DelKeyPrefix]error", zap.String("prefix", key_prefix), zap.String("errmsg", err.Error()))
 		return 0, err
