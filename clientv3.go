@@ -23,7 +23,7 @@ type EtcdV3Client struct {
 	*clientv3.Client
 }
 
-func newEtcdV3Client(config *EtcdConfig) (*EtcdV3Client, error) {
+func NewEtcdV3Client(config *EtcdConfig) (*EtcdV3Client, error) {
 	//init etcdv3 client config
 	etcdconf := clientv3.Config{
 		Endpoints:            config.Endpoints,
