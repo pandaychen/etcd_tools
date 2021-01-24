@@ -33,7 +33,7 @@ func (cl *EtcdV3Client) CreateEtcdMutex(key string, timeout time.Duration) (*Etc
 
 	mutex.Session, err = concurrency.NewSession(cl.Client, opts...)
 	if err != nil {
-		cl.Client.Logger.Error("[UnloCreateEtcdMutexck]NewSession error", zap.String("errmsg", err.Error()), zap.String("key", key))
+		cl.Logger.Error("[UnloCreateEtcdMutexck]NewSession error", zap.String("errmsg", err.Error()), zap.String("key", key))
 		return nil, err
 	}
 	mutex.Mutex = concurrency.NewMutex(mutex.Session, key)
